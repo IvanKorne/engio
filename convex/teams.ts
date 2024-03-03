@@ -1,11 +1,16 @@
 import { v } from "convex/values";
 import { query, mutation } from "./_generated/server";
 
-// export const createTeam = {
-//   args: {},
-//   async handler(ctx, args) {},
-// };
+// Create a team in teams db
+export const createTeam = mutation({
+  args: { teamName: v.string(), createdBy: v.string() },
+  async handler(ctx, args) {
+    const res = await ctx.db.insert("teams", args);
+    return res;
+  },
+});
 
+// Retrieve a team in teams db
 export const getTeam = query({
   args: {
     email: v.string(),

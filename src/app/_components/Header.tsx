@@ -21,7 +21,7 @@ const Header = () => {
             <ul className="flex items-center gap-6 text-sm">
               <li>
                 <a
-                  className="text-white transition hover:text-gray-100/75 dark:text-white dark:hover:text-white/75"
+                  className="text-white duration-300 transition hover:text-gray-100/75 dark:text-white dark:hover:text-white/75"
                   href="#"
                 >
                   About
@@ -30,7 +30,7 @@ const Header = () => {
 
               <li>
                 <a
-                  className="text-white transition hover:text-gray-100/75 dark:text-white dark:hover:text-white/75"
+                  className="text-white transition duration-300  hover:text-gray-100/75 dark:text-white dark:hover:text-white/75"
                   href="#"
                 >
                   Careers
@@ -39,7 +39,7 @@ const Header = () => {
 
               <li>
                 <a
-                  className="text-white transition hover:text-gray-100/75 dark:text-white dark:hover:text-white/75"
+                  className="text-white transition duration-300  hover:text-gray-100/75 dark:text-white dark:hover:text-white/75"
                   href="#"
                 >
                   History
@@ -48,7 +48,7 @@ const Header = () => {
 
               <li>
                 <a
-                  className="text-white transition hover:text-gray-100/75 dark:text-white dark:hover:text-white/75"
+                  className="text-white transition duration-300  hover:text-gray-100/75 dark:text-white dark:hover:text-white/75"
                   href="#"
                 >
                   Services
@@ -57,7 +57,7 @@ const Header = () => {
 
               <li>
                 <a
-                  className="text-white transition hover:text-gray-100/75 dark:text-white dark:hover:text-white/75"
+                  className="text-white transition duration-300  hover:text-gray-100/75 dark:text-white dark:hover:text-white/75"
                   href="#"
                 >
                   Projects
@@ -69,21 +69,21 @@ const Header = () => {
           <div className="flex items-center gap-4">
             <div className="sm:flex sm:gap-4">
               <a
-                className="block rounded-md bg-pink-700 px-5 py-2.5 text-sm font-medium text-white transition hover:bg-pink-500 "
+                className="block rounded-md bg-pink-700  duration-300 px-5 py-2.5 text-sm font-medium text-white transition hover:bg-pink-500 "
                 href="#"
               >
                 <LoginLink postLoginRedirectURL="/dashboard">Login</LoginLink>
               </a>
 
               <a
-                className="hidden rounded-md bg-blue-600 px-5 py-2.5 text-sm font-medium text-white transition hover:bg-blue-500 sm:block"
+                className="hidden rounded-md bg-blue-600 duration-300  px-5 py-2.5 text-sm font-medium text-white transition hover:bg-blue-500 sm:block"
                 href="#"
               >
                 <RegisterLink>Register</RegisterLink>
               </a>
             </div>
 
-            <button className="block rounded bg-gray-100 p-2.5 text-gray-600 transition hover:text-gray-600/75 md:hidden dark:bg-gray-800 dark:text-white dark:hover:text-white/75">
+            <button className="block rounded bg-gray-100 p-2.5 duration-300  text-gray-600 transition hover:text-gray-600/75 md:hidden dark:bg-gray-800 dark:text-white dark:hover:text-white/75">
               <span className="sr-only">Toggle menu</span>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
