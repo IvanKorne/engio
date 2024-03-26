@@ -1,7 +1,6 @@
-"use client";
+import React, { useEffect, useState, useCallback } from "react";
 import { useKindeBrowserClient } from "@kinde-oss/kinde-auth-nextjs";
 import { useConvex } from "convex/react";
-import React, { useEffect, useState } from "react";
 import { api } from "../../../../convex/_generated/api";
 import { useRouter } from "next/navigation";
 import Sidebar from "./_components/Sidebar";
@@ -13,22 +12,18 @@ type TChildren = {
 
 const DashboardLayout = ({ children }: TChildren) => {
   const { user }: any = useKindeBrowserClient();
-  // shortcut for useQuery/useMutation
   const convex = useConvex();
-  // once an action is down, reroute user to different page
   const router = useRouter();
-
   const [fileList, setFileList] = useState();
 
-  // check for team/teams, if empty, create team
-  const checkTeam = async () => {
+  const checkTeam = useCallback(async () => {
     const res = await convex.query(api.teams.getTeam, {
       email: user?.email,
     });
     if (!res?.length) {
       router.push("teams/create");
     }
-  };
+  }, [user?.email, convex, router]);
 
   useEffect(() => {
     user && checkTeam();

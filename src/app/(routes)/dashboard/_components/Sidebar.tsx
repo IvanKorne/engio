@@ -1,5 +1,5 @@
 import { useKindeBrowserClient } from "@kinde-oss/kinde-auth-nextjs";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState, useCallback } from "react";
 import SidebarTop from "./SidebarTop";
 import SidebarBottom from "./SidebarBottom";
 import { useConvex, useMutation } from "convex/react";
@@ -12,13 +12,11 @@ const Sidebar = () => {
   const { user }: any = useKindeBrowserClient();
   const convex = useConvex();
   const [curTeam, setCurTeam] = useState<Team>();
-  //This will make our file progress bar active
   const [totalFiles, setTotalFiles] = useState<Number>();
   const { fileList, setFileList } = useContext(FileListContext);
 
   const fileCreate = useMutation(api.files.createFile);
 
-  // Create filename, toast will create popup
   const createFile = (fileName: string) => {
     if (curTeam) {
       fileCreate({
@@ -31,7 +29,6 @@ const Sidebar = () => {
       }).then(
         (resp: any) => {
           if (resp) {
-            //This is to update the file count
             getFiles();
             toast("File Created Successfuly");
           }
@@ -43,7 +40,8 @@ const Sidebar = () => {
     }
   };
 
-  const getFiles = async () => {
+  // Define getFiles function with useCallback
+  const getFiles = useCallback(async () => {
     if (curTeam) {
       const result = await convex.query(api.files.getFiles, {
         teamId: curTeam?._id,
@@ -51,9 +49,8 @@ const Sidebar = () => {
       setFileList(result);
       setTotalFiles(result.length);
     }
-  };
+  }, [curTeam, convex, setFileList]);
 
-  //Update current team
   useEffect(() => {
     curTeam && getFiles();
   }, [curTeam, getFiles]);

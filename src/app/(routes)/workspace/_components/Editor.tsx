@@ -1,5 +1,4 @@
-"use client";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState, useCallback } from "react";
 import EditorJS from "@editorjs/editorjs";
 //@ts-ignore
 import Header from "@editorjs/header";
@@ -80,7 +79,7 @@ const Editor = ({ onSaveTrigger, fileId, fileData }: WorkplaceType) => {
 
   const updateDocument = useMutation(api.files.updateDocument);
 
-  const saveDocument = () => {
+  const saveDocument = useCallback(() => {
     if (ref.current) {
       ref.current
         .save()
@@ -101,7 +100,7 @@ const Editor = ({ onSaveTrigger, fileId, fileData }: WorkplaceType) => {
           console.log("Saving failed: ", error);
         });
     }
-  };
+  }, [fileId, updateDocument]);
 
   useEffect(() => {
     fileData && initEditor();

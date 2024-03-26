@@ -1,5 +1,4 @@
-"use client";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import { Excalidraw, MainMenu, WelcomeScreen } from "@excalidraw/excalidraw";
 import { api } from "../../../../../convex/_generated/api";
 import { useConvex, useMutation } from "convex/react";
@@ -9,14 +8,15 @@ const Canvas = ({ onSaveTrigger, fileId, fileData }: WorkplaceType) => {
   const convex = useConvex();
   const [whiteboard, setWhiteboard] = useState<any>();
   const updateWhiteboard = useMutation(api.files.updateWhiteboard);
-  const saveWhiteboard = () => {
+
+  const saveWhiteboard = useCallback(() => {
     updateWhiteboard({
       _id: fileId,
       whiteboard: JSON.stringify(whiteboard),
     }).then((resp) => {
       console.log(resp);
     });
-  };
+  }, [fileId, updateWhiteboard, whiteboard]);
 
   useEffect(() => {
     onSaveTrigger && saveWhiteboard();

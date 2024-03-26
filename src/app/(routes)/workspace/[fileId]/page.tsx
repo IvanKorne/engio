@@ -1,5 +1,4 @@
-"use client";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import WorkspaceHeader from "../_components/WorkspaceHeader";
 import Editor from "../_components/Editor";
 import Canvas from "../_components/Canvas";
@@ -12,16 +11,17 @@ const Workspace = ({ params }: any) => {
   const [fileData, setFileData] = useState<File | any>();
   const convex = useConvex();
 
-  const getFileData = async () => {
+  const getFileData = useCallback(async () => {
     const result = await convex.query(api.files.getFileById, {
       _id: params.fileId,
     });
     setFileData(result);
-  };
+  }, [convex, params.fileId]);
 
   useEffect(() => {
     params.fileId && getFileData();
   }, [params.fileId, getFileData]);
+
   return (
     <div>
       <WorkspaceHeader onSave={() => setSave(!save)} />

@@ -1,5 +1,4 @@
-"use client";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import Image from "next/image";
 import logo from "../../../icon.png";
 import { ChevronDown, Settings, Users, LogOut, LayoutGrid } from "lucide-react";
@@ -37,11 +36,11 @@ const SidebarTop = ({ user, setCurrentTeamInfo }: any) => {
   const [teams, setTeams] = useState<Team[]>();
   const [currentTeam, setCurrentTeam] = useState<Team>();
 
-  const getTeams = async () => {
+  const getTeams = useCallback(async () => {
     const res = await convex.query(api.teams.getTeam, { email: user?.email });
     setTeams(res);
     setCurrentTeam(res[0]);
-  };
+  }, [user?.email, convex]);
 
   //If an item in menu has a path, go to that path when clicked
   const onMenuClick = (item: MenuItem) => {
@@ -49,6 +48,7 @@ const SidebarTop = ({ user, setCurrentTeamInfo }: any) => {
       router.push(item.path);
     }
   };
+
   useEffect(() => {
     // When user is fetched, then fetch teams
     user && getTeams();
