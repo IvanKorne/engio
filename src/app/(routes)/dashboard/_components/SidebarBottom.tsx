@@ -13,7 +13,7 @@ import {
   DialogFooter,
   DialogClose,
 } from "@/components/ui/dialog";
-import Constant from "@/app/_constant/Constant";
+import { maxFreeFiles } from "@/app/_constant/Constant";
 import PricingDialog from "./PricingDialog";
 
 const SidebarBottom = ({ createFile, totalFiles }: any) => {
@@ -58,7 +58,7 @@ const SidebarBottom = ({ createFile, totalFiles }: any) => {
               New File
             </Button>
           </DialogTrigger>
-          {totalFiles < Constant.MAX_FREE_FILE ? (
+          {totalFiles < maxFreeFiles.MAX_FREE_FILE ? (
             <DialogContent>
               <DialogHeader>
                 <DialogTitle>Create New File</DialogTitle>
@@ -95,7 +95,7 @@ const SidebarBottom = ({ createFile, totalFiles }: any) => {
       </div>
       <h2 className="text-xs ">
         <strong>{totalFiles}</strong> out of{" "}
-        <strong>{Constant.MAX_FREE_FILE} </strong>
+        <strong>{maxFreeFiles.MAX_FREE_FILE} </strong>
         files used
       </h2>
       <h2 className="font-bold text-sm">Upgrade for unlimited access</h2>

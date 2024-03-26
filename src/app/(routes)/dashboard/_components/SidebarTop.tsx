@@ -52,11 +52,11 @@ const SidebarTop = ({ user, setCurrentTeamInfo }: any) => {
   useEffect(() => {
     // When user is fetched, then fetch teams
     user && getTeams();
-  }, [user]);
+  }, [user, getTeams]);
 
   useEffect(() => {
     currentTeam && setCurrentTeamInfo(currentTeam);
-  }, [currentTeam]);
+  }, [currentTeam, setCurrentTeamInfo]);
 
   // Anything in PopoverContent is in a popup
   return (

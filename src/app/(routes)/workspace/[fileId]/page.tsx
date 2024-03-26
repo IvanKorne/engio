@@ -21,7 +21,7 @@ const Workspace = ({ params }: any) => {
 
   useEffect(() => {
     params.fileId && getFileData();
-  }, []);
+  }, [params.fileId, getFileData]);
   return (
     <div>
       <WorkspaceHeader onSave={() => setSave(!save)} />

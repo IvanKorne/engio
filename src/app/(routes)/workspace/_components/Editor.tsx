@@ -105,11 +105,11 @@ const Editor = ({ onSaveTrigger, fileId, fileData }: WorkplaceType) => {
 
   useEffect(() => {
     fileData && initEditor();
-  }, [fileData]);
+  }, [fileData, initEditor]);
 
   useEffect(() => {
     onSaveTrigger && saveDocument();
-  }, [onSaveTrigger]);
+  }, [onSaveTrigger, saveDocument]);
 
   return (
     <div>

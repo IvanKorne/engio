@@ -32,7 +32,7 @@ const DashboardLayout = ({ children }: TChildren) => {
 
   useEffect(() => {
     user && checkTeam();
-  }, [user]);
+  }, [user, checkTeam]);
 
   return (
     <FileListContext.Provider value={{ fileList, setFileList }}>

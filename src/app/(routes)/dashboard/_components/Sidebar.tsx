@@ -56,7 +56,7 @@ const Sidebar = () => {
   //Update current team
   useEffect(() => {
     curTeam && getFiles();
-  }, [curTeam]);
+  }, [curTeam, getFiles]);
 
   return (
     <div className="bg-gray-50 fixed h-screen w-72 border-r p-2 flex flex-col">

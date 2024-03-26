@@ -52,6 +52,7 @@ const FileList = () => {
                 <tr
                   className="odd:bg-gray-50 cursor-pointer hover:opacity-80"
                   onClick={() => router.push(`/workspace/${file._id}`)}
+                  key={file._id}
                 >
                   <td className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
                     {file.fileName}

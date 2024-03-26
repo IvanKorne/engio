@@ -20,7 +20,7 @@ const Canvas = ({ onSaveTrigger, fileId, fileData }: WorkplaceType) => {
 
   useEffect(() => {
     onSaveTrigger && saveWhiteboard();
-  }, [onSaveTrigger]);
+  }, [onSaveTrigger, saveWhiteboard]);
 
   return (
     <div className="h-[650px]">
