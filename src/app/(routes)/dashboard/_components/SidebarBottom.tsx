@@ -13,6 +13,8 @@ import {
   DialogFooter,
   DialogClose,
 } from "@/components/ui/dialog";
+import Constant from "@/app/_constant/Constant";
+import PricingDialog from "./PricingDialog";
 
 const SidebarBottom = ({ createFile, totalFiles }: any) => {
   const menuList: MenuItem[] = [
@@ -56,29 +58,33 @@ const SidebarBottom = ({ createFile, totalFiles }: any) => {
               New File
             </Button>
           </DialogTrigger>
-          <DialogContent>
-            <DialogHeader>
-              <DialogTitle>Create New File</DialogTitle>
-              <DialogDescription>
-                <Input
-                  placeholder="Enter File Name"
-                  className="mt-3"
-                  onChange={(e) => setFileInput(e.target.value)}
-                />
-              </DialogDescription>
-            </DialogHeader>
-            <DialogFooter className="sm:justify-start">
-              <DialogClose asChild>
-                <Button
-                  className="bg-blue-500 hover:bg-blue-600 transition duration-300"
-                  disabled={fileInput.length < 4}
-                  onClick={() => createFile(fileInput)}
-                >
-                  Create
-                </Button>
-              </DialogClose>
-            </DialogFooter>
-          </DialogContent>
+          {totalFiles < Constant.MAX_FREE_FILE ? (
+            <DialogContent>
+              <DialogHeader>
+                <DialogTitle>Create New File</DialogTitle>
+                <DialogDescription>
+                  <Input
+                    placeholder="Enter File Name"
+                    className="mt-3"
+                    onChange={(e) => setFileInput(e.target.value)}
+                  />
+                </DialogDescription>
+              </DialogHeader>
+              <DialogFooter className="sm:justify-start">
+                <DialogClose asChild>
+                  <Button
+                    className="bg-blue-500 hover:bg-blue-600 transition duration-300"
+                    disabled={fileInput.length < 4}
+                    onClick={() => createFile(fileInput)}
+                  >
+                    Create
+                  </Button>
+                </DialogClose>
+              </DialogFooter>
+            </DialogContent>
+          ) : (
+            <PricingDialog />
+          )}
         </Dialog>
       </div>
       <div className="h-4 w-full bg-gray-300 rounded-lg">
@@ -88,7 +94,8 @@ const SidebarBottom = ({ createFile, totalFiles }: any) => {
         ></div>
       </div>
       <h2 className="text-xs ">
-        <strong>{totalFiles}</strong> out of <strong>5 </strong>
+        <strong>{totalFiles}</strong> out of{" "}
+        <strong>{Constant.MAX_FREE_FILE} </strong>
         files used
       </h2>
       <h2 className="font-bold text-sm">Upgrade for unlimited access</h2>

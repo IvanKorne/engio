@@ -6,6 +6,8 @@ import { api } from "../../../../convex/_generated/api";
 import { LogoutLink } from "@kinde-oss/kinde-auth-nextjs";
 import { useKindeBrowserClient } from "@kinde-oss/kinde-auth-nextjs";
 import { useConvex } from "convex/react";
+import FileList from "./_components/FileList";
+import HeaderDashboard from "./_components/Header";
 
 const Dashboard = () => {
   const { user }: any = useKindeBrowserClient();
@@ -36,10 +38,9 @@ const Dashboard = () => {
   }, [user]);
 
   return (
-    <div>
-      <Button>
-        <LogoutLink>Logout</LogoutLink>
-      </Button>
+    <div className="p-8">
+      <HeaderDashboard />
+      <FileList />
     </div>
   );
 };
