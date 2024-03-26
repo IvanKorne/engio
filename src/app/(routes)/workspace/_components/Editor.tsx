@@ -41,7 +41,7 @@ const Editor = ({ onSaveTrigger, fileId, fileData }: WorkplaceType) => {
   const ref = useRef<EditorJS>();
   const [doc, setDoc] = useState(template);
 
-  const initEditor = () => {
+  const initEditor = useCallback(() => {
     const editor = new EditorJS({
       holder: "editor",
       data: fileData.document ? JSON.parse(fileData.document) : template,
@@ -75,7 +75,7 @@ const Editor = ({ onSaveTrigger, fileId, fileData }: WorkplaceType) => {
       },
     });
     ref.current = editor;
-  };
+  }, [fileData]);
 
   const updateDocument = useMutation(api.files.updateDocument);
 

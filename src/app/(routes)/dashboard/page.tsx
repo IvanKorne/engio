@@ -26,14 +26,7 @@ const Dashboard = () => {
         console.log(r);
       });
     }
-  }, [
-    user?.email,
-    user?.given_name,
-    user?.email,
-    user?.picture,
-    createUser,
-    convex,
-  ]);
+  }, [user?.email, user?.given_name, user?.picture, createUser, convex]);
 
   useEffect(() => {
     if (user) {
