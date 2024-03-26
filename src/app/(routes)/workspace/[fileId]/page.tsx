@@ -1,3 +1,4 @@
+"use client";
 import React, { useEffect, useState, useCallback } from "react";
 import WorkspaceHeader from "../_components/WorkspaceHeader";
 import Editor from "../_components/Editor";

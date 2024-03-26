@@ -1,8 +1,9 @@
+"use client";
 import React, { useEffect, useCallback } from "react";
-import { Button } from "@/components/ui/button";
+
 import { useMutation, useQuery } from "convex/react";
 import { api } from "../../../../convex/_generated/api";
-import { LogoutLink } from "@kinde-oss/kinde-auth-nextjs";
+
 import { useKindeBrowserClient } from "@kinde-oss/kinde-auth-nextjs";
 import { useConvex } from "convex/react";
 import FileList from "./_components/FileList";

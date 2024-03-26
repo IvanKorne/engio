@@ -1,3 +1,4 @@
+"use client";
 import React, { useEffect, useState, useCallback } from "react";
 import { useKindeBrowserClient } from "@kinde-oss/kinde-auth-nextjs";
 import { useConvex } from "convex/react";
