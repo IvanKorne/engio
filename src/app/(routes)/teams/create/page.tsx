@@ -23,7 +23,6 @@ const CreateTeam = () => {
       teamName: team,
       createdBy: user?.email,
     }).then((resp) => {
-      console.log(resp);
       if (resp) {
         router.push("/dashboard");
         // Sends a popup, Toaster placed in root layout

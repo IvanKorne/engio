@@ -22,8 +22,6 @@ const Dashboard = () => {
         name: user.given_name,
         email: user.email,
         image: user.picture,
-      }).then((r: any) => {
-        console.log(r);
       });
     }
   }, [user?.email, user?.given_name, user?.picture, createUser, convex]);
